@@ -47,11 +47,32 @@
         <source src="hpbd.mp4" type="video/mp4">
     </video>
 
-    <audio id="music" loop>
-        <source src="生日快乐歌 中文  生日快乐歌曲  生日歌 Happy Birthday To You Chinese Song - 生日快乐歌 中文版 - YouTube.mp3" type="audio/mpeg">
-    </audio>
-</div>
+ <audio id="music" loop>
+    <source src="nhac.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+function check() {
+    let pass = document.getElementById("pass").value;
+    let music = document.getElementById("music");
+    let video = document.getElementById("myVideo");
+
+    if(pass === "30031511") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+        
+        // Chỉnh âm lượng và phát nhạc
+        music.volume = 0.6; 
+        music.play();
+        video.play();
+        
+        setInterval(createHeart, 300);
+        startSlideshow();
+    } else {
+        alert("Sai mật khẩu rồi người ơi! 😢");
+    }
+}
+</script>
 <script>
 function check() {
     let pass = document.getElementById("pass").value;
