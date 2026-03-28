@@ -42,18 +42,33 @@
     </div>
     <div class="gift" onclick="openGift()">🎁</div>
     <div id="giftText" style="padding: 15px;"></div>
-    <video id="myVideo" controls loop><source src="hpbd.mp4" type="video/mp4"></video>
-    <audio id="music" loop><source src="https://files.catbox.moe/kixh2j.mp3" type="audio/mpeg"></audio>
+    
+    <video id="myVideo" controls loop>
+        <source src="hpbd.mp4" type="video/mp4">
+    </video>
+
+    <audio id="music" loop>
+        <source src="生日快乐歌 中文  生日快乐歌曲  生日歌 Happy Birthday To You Chinese Song - 生日快乐歌 中文版 - YouTube.mp3" type="audio/mpeg">
+    </audio>
 </div>
 
 <script>
 function check() {
     let pass = document.getElementById("pass").value;
+    let music = document.getElementById("music");
+    let video = document.getElementById("myVideo");
+
     if(pass === "30031511") {
         document.getElementById("login").style.display = "none";
         document.getElementById("main").style.display = "block";
-        document.getElementById("music").play();
-        document.getElementById("myVideo").play();
+        
+        // Cài âm lượng 40%
+        music.volume = 0.4;
+        
+        // Phát nhạc và video
+        music.play().catch(e => console.log("Cần tương tác để phát nhạc"));
+        video.play().catch(e => console.log("Cần tương tác để phát video"));
+        
         setInterval(createHeart, 300);
         startSlideshow();
     } else {
@@ -71,7 +86,7 @@ function startSlideshow() {
 }
 
 function openGift() {
-    document.getElementById("giftText").innerHTML = "💖 <b>Anh Yêu Em Rất Nhiều!</b> <br> Chúc Em Bé Luôn Hạnh Phúc Và Xinh Đẹp 💕";
+    document.getElementById("giftText").innerHTML = "💖 <b>Anh Yêu Em Rất Nhiều!💖</b> <br><br> Kiến Thức Yêu Em Nhiều Vô Kể <br>Tra Mạng Đọc Thêm Sao Thỷ Sao Xuyến <br> Sao Mà Hông Thả Hết Yêu Em.<br> 💕Chúc Em Bé Luôn Hạnh Phúc Và Xinh Đẹp 💕";
 }
 
 function createHeart() {
@@ -82,13 +97,6 @@ function createHeart() {
     document.body.appendChild(heart);
     setTimeout(() => { heart.remove(); }, 5000);
 }
-    <audio id="music" loop>
-    <source src="Birthday To You.mp3" type="audio/mpeg">
-</audio>
-    script>
-let music = document.getElementById("music");
-music.volume = 0.4; // âm lượng 30%
-</script>
 </script>
 </body>
 </html>
