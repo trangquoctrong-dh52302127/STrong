@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>For My Love 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+}
+
+/* LOGIN */
+#login {
+    margin-top: 150px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4081;
+    color: white;
+    cursor: pointer;
+}
+
+/* MAIN */
+#main {
+    display: none;
+}
+
+/* TITLE */
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+}
+
+/* SLIDESHOW */
+.slideshow img {
+    width: 250px;
+    border-radius: 20px;
+}
+
+/* TIMELINE */
+.timeline {
+    margin-top: 30px;
+}
+
+.timeline div {
+    margin: 10px;
+}
+
+/* GIFT */
+.gift {
+    font-size: 80px;
+    cursor: pointer;
+}
+
+/* VIDEO */
+video {
+    width: 80%;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+/* 💖 TIM BAY */
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: float 5s linear forwards;
+  z-index: 9999;
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {opacity: 1; transform: translateY(0) rotate(45deg);}
+  100% {opacity: 0; transform: translateY(-600px) rotate(45deg);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN -->
+<div id="login">
+    <div class="title">Gửi Công Chúa Của Anh... 💖</div>
+    <h2>🔐 Nhập Mật Khẩu Để Mở 🎁</h2>
+    <input type="password" id="pass" placeholder="MK Bé Là: 30031511">
+    <button onclick="check()">Mở</button>
+</div>
+
+<!-- 💖 MAIN -->
+<div id="main">
+
+    <div class="title">Happy Birthday My Love 💖</div>
+
+    <!-- 🎵 nhạc -->
+    <audio id="music" autoplay loop>
+    <source src="生日快乐歌 中文  生日快乐歌曲  生日歌 Happy Birthday To You Chinese Song - 生日快乐歌 中文版 - YouTube.mp3" type="audio/mpeg">
+</audio>
+<script>
+let music = document.getElementById("music");
+music.volume = 0.4; // âm lượng 30%
+</script>
+</script>
+
+    <!-- 📸 SLIDESHOW -->
+    <div class="slideshow">
+        <img id="slide" src="https://i.imgur.com/1.jpg">
+    </div>
+
+    <!-- 💌 TIMELINE -->
+    <div class="timeline">
+        <div>💖 Ngày gặp nhau: 26/10/2024</div>
+        <div>💕 Tổng ngày quen: 517 Ngày </div>
+        <div>🎉 Sinh Nhật Em Hôm Nay 30/03 🎂</div>
+    </div>
+
+    <!-- 🎁 GIFT -->
+    <div class="gift" onclick="openGift()">🎁</div>
+    <p id="giftText"></p>
+
+ <!-- 🎬 VIDEO -->
+        <video controls autoplay>
+        <source src="hpbd.mp4">
+    </video>
+
+</div>
+
+<audio id="music" loop>
+    <source src="https://files.catbox.moe/kixh2j.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* 🔐 PASSWORD & START MUSIC */
+function check() {
+    let pass = document.getElementById("pass").value;
+    let music = document.getElementById("music");
+
+    if(pass === "30031511") {
+        // 1. Ẩn login, hiện main
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "block";
+
+        // 2. Chạy nhạc (Trình duyệt cho phép vì đã có tương tác click nút)
+        music.play().catch(error => {
+            console.log("Trình duyệt chặn tự động phát, cần click thêm lần nữa.");
+        });
+
+        // 3. Cho tim bay luôn
+        startHearts(); 
+        
+    } else {
+        alert("Sai mật khẩu rồi người ơi! 😢");
+    }
+}
+
+/* 📸 SLIDESHOW */
+let images = [
+    "https://inkythuatso.com/uploads/thumbnails/800/2023/02/hinh-anh-hoa-chung-mung-sinh-nhat-dep-lung-linh-mien-phi-09-09-19-12.jpg",
+    "vk.jpg",
+    "VKCK.jpg" 
+];
+
+let i = 0;
+setInterval(() => {
+    let slideImg = document.getElementById("slide");
+    if(slideImg) {
+        i = (i + 1) % images.length;
+        slideImg.src = images[i];
+    }
+}, 2000);
+
+/* 🎁 GIFT */
+function openGift() {
+    document.getElementById("giftText").innerHTML = "💖 <b>Anh Yêu Em Rất Nhiều!💖</b> </br> <br>  Kiến Thức Yêu Em Nhiều Vô Kể <br>Tra Mạng Đọc Thêm Sao Thỷ Sao Xuyến </br> Sao Mà Hông Thả Hết Yêu Em.<br> 💕Chúc Em Bé Luôn Hạnh Phúc Và Xinh Đẹp 💕";
+}
+
+/* 💖 TIM BAY */
+function startHearts(){
+    setInterval(createHeart, 300);
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.bottom = "0px"; // Xuất hiện từ dưới cùng
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+</script>
+
+</body>
+</html>
