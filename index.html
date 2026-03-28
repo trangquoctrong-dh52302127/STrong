@@ -64,8 +64,8 @@ function check() {
         
         // Chỉnh âm lượng và phát nhạc
         music.volume = 0.6; 
-        music.play();
-        video.play();
+        music.play().catch(e => console.log("Lỗi nhạc:", e));
+        video.play().catch(e => console.log("Lỗi video:", e));
         
         setInterval(createHeart, 300);
         startSlideshow();
