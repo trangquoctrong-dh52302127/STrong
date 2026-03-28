@@ -7,14 +7,13 @@
     <style>
         body { margin: 0; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; text-align: center; overflow-x: hidden; }
         #login { margin-top: 150px; }
-        input { padding: 12px; border-radius: 10px; border: none; width: 200px; text-align: center; }
-        button { padding: 10px 25px; border: none; border-radius: 10px; background: #ff4081; color: white; cursor: pointer; font-weight: bold; margin-left: 10px; }
+        input { padding: 12px; border-radius: 10px; border: none; width: 200px; text-align: center; font-size: 16px; }
+        button { padding: 10px 25px; border: none; border-radius: 10px; background: #ff4081; color: white; cursor: pointer; font-weight: bold; margin-top: 10px; }
         #main { display: none; padding: 20px; }
         .title { font-family: 'Great Vibes', cursive; font-size: 50px; margin: 20px 0; }
-        .slideshow img { width: 90%; max-width: 400px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); border: 5px solid white; }
+        .slideshow img { width: 90%; max-width: 400px; border-radius: 20px; border: 5px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         .timeline { margin: 20px 0; font-size: 18px; line-height: 1.8; }
-        .gift { font-size: 80px; cursor: pointer; transition: transform 0.3s; }
-        .gift:hover { transform: scale(1.2); }
+        .gift { font-size: 80px; cursor: pointer; }
         video { width: 90%; max-width: 500px; border-radius: 20px; margin-top: 20px; border: 3px solid white; }
         .heart { position: fixed; width: 20px; height: 20px; background: red; transform: rotate(45deg); animation: float 5s linear forwards; z-index: 999; }
         .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background: red; border-radius: 50%; }
@@ -28,58 +27,40 @@
 <div id="login">
     <div class="title">Gửi Công Chúa Của Anh... 💖</div>
     <h2>🔐 Nhập Mật Khẩu Để Mở 🎁</h2>
-    <input type="password" id="pass" placeholder="Nhập mật khẩu tại đây...">
+    <input type="password" id="pass" placeholder="Mật khẩu là 30031511">
+    <br>
     <button onclick="check()">Mở</button>
-    <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">Gợi ý: 30031511</p>
 </div>
 
 <div id="main">
     <div class="title">Happy Birthday My Love 💖</div>
-
-    <div class="slideshow">
-        <img id="slide" src="vk.jpg">
-    </div>
-
+    <div class="slideshow"><img id="slide" src="vk.jpg"></div>
     <div class="timeline">
         <div>💖 Ngày gặp nhau: 26/10/2024</div>
         <div>💕 Tổng ngày quen: 517 Ngày</div>
         <div>🎉 Sinh Nhật Em Hôm Nay 30/03 🎂</div>
     </div>
-
     <div class="gift" onclick="openGift()">🎁</div>
-    <div id="giftText" style="padding: 15px; font-style: italic;"></div>
-
-    <video controls loop id="myVideo">
-        <source src="hpbd.mp4" type="video/mp4">
-    </video>
-
-    <audio id="music" loop>
-        <source src="https://files.catbox.moe/kixh2j.mp3" type="audio/mpeg">
-    </audio>
+    <div id="giftText" style="padding: 15px;"></div>
+    <video id="myVideo" controls loop><source src="hpbd.mp4" type="video/mp4"></video>
+    <audio id="music" loop><source src="https://files.catbox.moe/kixh2j.mp3" type="audio/mpeg"></audio>
 </div>
 
 <script>
-// Kiểm tra mật khẩu
 function check() {
     let pass = document.getElementById("pass").value;
-    let music = document.getElementById("music");
-    let video = document.getElementById("myVideo");
-
     if(pass === "30031511") {
         document.getElementById("login").style.display = "none";
         document.getElementById("main").style.display = "block";
-        
-        // Chạy nhạc và video
-        music.play();
-        video.play();
-        startHearts(); 
+        document.getElementById("music").play();
+        document.getElementById("myVideo").play();
+        setInterval(createHeart, 300);
         startSlideshow();
     } else {
         alert("Sai mật khẩu rồi người ơi! 😢");
     }
 }
 
-// Slideshow ảnh
 let images = ["vk.jpg", "VKCK.jpg"];
 let i = 0;
 function startSlideshow() {
@@ -89,15 +70,10 @@ function startSlideshow() {
     }, 3000);
 }
 
-// Mở quà
 function openGift() {
-    document.getElementById("giftText").innerHTML = "💖 <b>Anh Yêu Em Rất Nhiều!💖</b> <br><br> Kiến Thức Yêu Em Nhiều Vô Kể <br> Tra Mạng Đọc Thêm Sao Thủy Sao Xuyến <br> Sao Mà Hông Thả Hết Yêu Em. <br><br> 💕Chúc Em Bé Luôn Hạnh Phúc Và Xinh Đẹp 💕";
+    document.getElementById("giftText").innerHTML = "💖 <b>Anh Yêu Em Rất Nhiều!</b> <br> Chúc Em Bé Luôn Hạnh Phúc Và Xinh Đẹp 💕";
 }
 
-// Hiệu ứng tim bay
-function startHearts(){
-    setInterval(createHeart, 300);
-}
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
